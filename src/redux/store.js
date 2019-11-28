@@ -10,7 +10,7 @@ const initialState = {
   countries: {},
   regions: {},
   subregions: {},
-  tags: {},
+  tags: [],
   filters: {
     searchPhrase: '',
     tags: [],
