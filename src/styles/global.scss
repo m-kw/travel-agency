@@ -20,4 +20,16 @@ a, a:hover, a:visited {
   text-decoration: none;
 }
 
+.switchWrapper {
+  position: relative;
+
+  > :first-child ~ * {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    transition: 0.5s;
+  }
+}
+
 @import "./typography.scss";
