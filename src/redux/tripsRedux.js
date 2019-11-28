@@ -6,12 +6,15 @@ export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
 
   // filter by search phrase
-  if(filters.searchPhrase){
+  if(filters.searchPhrase) {
     const pattern = new RegExp(filters.searchPhrase, 'i');
     output = output.filter(trip => pattern.test(trip.name));
   }
 
-  // TODO - filter by duration
+  // filter by duration
+  if(filters.duration) {
+    output = output.filter(trip => filters.duration.from < trip.days && trip.days < filters.duration.to);
+  }
 
   // TODO - filter by tags
 
@@ -29,7 +32,7 @@ export const getTripById = ({ trips }, tripId) => {
 
 export const getTripsForCountry = ({ trips }, countryCode) => {
   const filtered = trips.filter(trip => trip.country.code === countryCode);
-  
+
   console.log('filtering trips by countryCode:', countryCode, filtered);
   return filtered.length ? filtered : [{error: true}];
 };
