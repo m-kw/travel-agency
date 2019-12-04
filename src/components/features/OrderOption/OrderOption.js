@@ -1,14 +1,34 @@
 import React from 'react';
-import styles from './OrderOption.scss';
 import PropTypes from 'prop-types';
 
-const OrderOption = (props) => {
-  console.log('props', props);
-  return (
-    <div className={styles.component}>
-      <h3 className={styles.title}>{props.name}</h3>
-    </div>
-  );
+import OrderOptionCheckboxes from './OrderOptionCheckboxes';
+import OrderOptionDropdown from './OrderOptionDropdown';
+import OrderOptionIcons from './OrderOptionIcons';
+import OrderOptionNumber from './OrderOptionNumber';
+
+import styles from './OrderOption.scss';
+
+const optionTypes = {
+  checkboxes: OrderOptionCheckboxes,
+  dropdown: OrderOptionDropdown,
+  icons: OrderOptionIcons,
+  number: OrderOptionNumber,
+};
+
+const OrderOption = ({ name, type, ...otherProps }) => {
+  const OptionComponent = optionTypes[type];
+  if(!OptionComponent) {
+    return null;
+  } else {
+    return (
+      <div className={styles.component}>
+        <h3 className={styles.title}>{name}</h3>
+        <OptionComponent
+          {...otherProps}
+        />
+      </div>
+    );
+  }
 };
 
 OrderOption.propTypes = {
