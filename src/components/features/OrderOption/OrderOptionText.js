@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './OrderOption.scss';
 
 const OrderOptionText = () => {
   return (
     <div>
-      <p>helo helo</p>
+      <input type='text' className={styles.input} />
     </div>
   );
 };
