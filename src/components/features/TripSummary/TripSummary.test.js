@@ -32,4 +32,19 @@ describe('Component TripSummary', () => {
   it('should throw error if props are not present', () => {
     expect(() => shallow(<TripSummary />)).toThrow();
   });
+
+  it('should render span for each tag', () => {
+    const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='1000' days={5} tags={['sun', 'mountains', 'hikking']} />);
+    const expectedTag1 = 'sun';
+    const expectedTag2 = 'mountains';
+    const expectedTag3 = 'hikking';
+    expect(component.find('.tag').at(0).text()).toEqual(expectedTag1);
+    expect(component.find('.tag').at(1).text()).toEqual(expectedTag2);
+    expect(component.find('.tag').at(2).text()).toEqual(expectedTag3);
+  });
+
+  it('should not render tags div if tags prop is falsy', () => {
+    const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='1000' days={5} />);
+    expect(component.find('.tags').exists()).toEqual(false);
+  });
 });
