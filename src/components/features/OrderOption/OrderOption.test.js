@@ -102,6 +102,18 @@ for (let type in optionTypes) {
         });
         break;
       }
+      case 'icons' : {
+        it('contains divs with class icon', () => {
+          const div = renderedSubcomponent.find('.icon');
+          expect(div.length).toBe(mockProps.values.length);
+        });
+
+        it('should run SetOrderOption function on change', () => {
+          renderedSubcomponent.last('.icon').simulate('change');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+        });
+        break;
+      }
     }
   });
 }
