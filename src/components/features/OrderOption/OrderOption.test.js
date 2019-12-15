@@ -117,7 +117,6 @@ for (let type in optionTypes) {
       case 'checkboxes' : {
         it('contains input', () => {
           const checkbox = renderedSubcomponent.find(`input[value="${testValue}"]`);
-          console.log(checkbox.debug());
           expect(checkbox.length).toBe(1);
         });
         it('should run setOrderOption function on change', () => {
@@ -138,6 +137,24 @@ for (let type in optionTypes) {
           renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValueNumber}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber });
+        });
+        break;
+      }
+      case 'text' : {
+        it('contains input', () => {
+          const input = renderedSubcomponent.find('.input');
+          expect(input.length).toBe(1);
+        });
+        break;
+      }
+      case 'date' : {
+        it('contains DatePicker', () => {
+          expect(subcomponent.contains('DatePicker'));
+        });
+        it('should handle change in DatePicker', () => {
+          renderedSubcomponent.simulate('change', testValue);
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith(testValue);
         });
         break;
       }
