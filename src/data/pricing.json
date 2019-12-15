@@ -57,12 +57,14 @@
   {
     "id": "name",
     "name": "Your name",
-    "type": "text"
+    "type": "text",
+    "required": true
   },
   {
     "id": "contact",
     "name": "Contact info (phone, email, etc.)",
-    "type": "text"
+    "type": "text",
+    "required": true
   },
   {
     "id": "start-date",

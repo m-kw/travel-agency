@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
 
-const OrderOptionText = ({ setOptionValue }) => {
+const OrderOptionText = ({ setOptionValue, required }) => {
   return (
     <div>
       <input
         type='text'
         className={styles.input}
         onChange={e => setOptionValue(e.currentTarget.value)}
-        isRequired
+        required={required}
       />
     </div>
   );
@@ -17,6 +17,8 @@ const OrderOptionText = ({ setOptionValue }) => {
 
 OrderOptionText.propTypes = {
   setOptionValue: PropTypes.func,
+  register: PropTypes.func,
+  required: PropTypes.bool,
 };
 
 export default OrderOptionText;
