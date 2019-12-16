@@ -5,6 +5,7 @@ import { getOrderOptions, setOrderOption } from '../../../redux/orderRedux';
 const mapStateToProps = state => {
   return {
     options: getOrderOptions(state),
+    valid: state.validForm,
   };
 };
 

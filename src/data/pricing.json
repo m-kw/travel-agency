@@ -57,19 +57,16 @@
   {
     "id": "name",
     "name": "Your name",
-    "defaultValue": "",
     "type": "text"
   },
   {
     "id": "contact",
     "name": "Contact info (phone, email, etc.)",
-    "defaultValue": "",
     "type": "text"
   },
   {
     "id": "start-date",
     "name": "Preferred trip start",
-    "defaultValue": "",
     "type": "date"
   }
 ]
