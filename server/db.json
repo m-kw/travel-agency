@@ -305,6 +305,21 @@
       "tripId": "5cc1d10130dfa407e2e54e20",
       "tripCountry": "Turkey",
       "id": 22
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "",
+      "contact": "",
+      "start-date": "2019-12-19T23:00:00.000Z",
+      "totalCost": "$51,381",
+      "tripName": "Pleasant travel in cool Turkey",
+      "tripId": "5cc1d10130dfa407e2e54e20",
+      "tripCountry": "Turkey",
+      "id": 23
     }
   ]
 }
