@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import { Row, Col }from 'react-flexbox-grid';
 import PropTypes from 'prop-types';
@@ -10,18 +10,20 @@ import settings from '../../../data/settings.js';
 import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
 
-const validateForm = (valid, setValid) => {
+const validateForm = (valid, options, tripCost, tripName, tripCountry, tripId) => {
   const textInputs = document.querySelectorAll('#text');
 
   textInputs.forEach(function() {
     if (textInputs[0].value !== '' && textInputs[1].value !== '') {
-      setValid(true);
+      valid = true;
       console.log('isValid?', valid);
     } else {
-      setValid(false);
+      valid = false;
       console.log('isValid?', valid);
     }
   });
+
+  valid ? sendOrder(options, tripCost, tripName, tripCountry, tripId) : null;
 
 };
 
@@ -56,27 +58,17 @@ const sendOrder = (options, tripCost, tripName, tripCountry, tripId) => {
     });
 };
 
-const OrderForm = ({ tripCost, setOrderOption, options, tripName, tripCountry, tripId }) => {
-  const [valid, setValid] = useState(false);
+const OrderForm = ({ tripCost, setOrderOption, options, tripName, tripCountry, tripId, valid }) => {
   return (
     <Row>
       {pricing.map((option) => (
         <Col md={4} key={option.id}>
-          <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} {...valid}/>
+          <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} valid={validateForm}/>
         </Col>
       ))}
       <Col xs={12}>
         <OrderSummary tripCost={tripCost} options={options}/>
-        <Button onClick={() => {
-          validateForm(valid, setValid);
-          if (valid === true) {
-            console.log('validT', valid);
-            sendOrder(options, tripCost, tripName, tripCountry, tripId);
-          } else if (valid === false){
-            console.log('validF', valid);
-            console.log('empty fields');
-          }
-        }}>Order now!</Button>
+        <Button onClick={() => validateForm(valid, options, tripCost, tripName, tripCountry, tripId)}>Order now!</Button>
       </Col>
     </Row>
   );
