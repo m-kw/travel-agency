@@ -154,7 +154,7 @@ for (let type in optionTypes) {
         it('should handle change in DatePicker', () => {
           renderedSubcomponent.simulate('change', testValue);
           expect(mockSetOrderOption).toBeCalledTimes(1);
-          expect(mockSetOrderOption).toBeCalledWith(testValue);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;
       }
