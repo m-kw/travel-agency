@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
 
-const OrderOptionText = ({ setOptionValue, validateForm }) => {
+const OrderOptionText = ({ setOptionValue, valid }) => {
   return (
     <div>
       <input
@@ -11,7 +11,7 @@ const OrderOptionText = ({ setOptionValue, validateForm }) => {
         className={styles.input}
         onChange={e => {
           setOptionValue(e.currentTarget.value);
-          validateForm();
+          valid;
         }}
       />
     </div>
@@ -21,8 +21,7 @@ const OrderOptionText = ({ setOptionValue, validateForm }) => {
 OrderOptionText.propTypes = {
   setOptionValue: PropTypes.func,
   currentValue: PropTypes.string,
-  valid: PropTypes.bool,
-  validateForm: PropTypes.func,
+  valid: PropTypes.func,
 };
 
 export default OrderOptionText;
