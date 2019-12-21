@@ -1,5 +1,5 @@
 export const formatTime = (seconds) => {
-  if (seconds === undefined) {
+  if (seconds === undefined || typeof seconds === 'string' || typeof seconds === 'function') {
     return null;
   }
 
