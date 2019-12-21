@@ -3,4 +3,8 @@ export const formatTime = (seconds) => {
     return null;
   }
 
+  if (seconds < 0) {
+    return null;
+  }
+
 };

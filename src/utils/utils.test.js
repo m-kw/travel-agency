@@ -10,5 +10,10 @@ describe('utils', () => {
       expect(formatTime('abc')).toBe(null);
       expect(formatTime(() => {})).toBe(null);
     });
+
+    it('should return null if arg < 0', () => {
+      expect(formatTime(-1)).toBe(null);
+      expect(formatTime(-2)).toBe(null);
+    });
   });
 });
