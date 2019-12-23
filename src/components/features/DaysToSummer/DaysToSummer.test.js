@@ -45,10 +45,11 @@ describe('Component DaysToSummer with mocked Date', () => {
   checkDescriptionAtDate('2019-06-21', '');
   checkDescriptionAtDate('2019-09-23', '');
 
-  const component = shallow(<DaysToSummer />);
-  console.log(component.debug());
-
   checkDescriptionAtDate('2019-10-20', '245 days to summer');
   checkDescriptionAtDate('2019-09-24', '271 days to summer');
+
+  checkDescriptionAtDate('2019-05-10', '42 days to summer');
+  checkDescriptionAtDate('2019-06-19', '2 days to summer');
+  checkDescriptionAtDate('2019-09-20', '1 day to summer');
 
 });

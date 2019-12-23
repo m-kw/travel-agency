@@ -17,7 +17,9 @@ class DaysToSummer extends React.Component {
       const nextYear = currentYear + 1;
       const nextSummer = new Date(Date.UTC(nextYear, 5, 21));
       days = Math.floor((nextSummer.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
-    }
+    } else if (currentTime < summerStart) {
+      days = Math.floor((summerStart.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
+    } 
 
     return days ;
   }
