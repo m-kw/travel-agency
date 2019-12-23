@@ -4,17 +4,22 @@ import styles from './DaysToSummer.scss';
 
 class DaysToSummer extends React.Component {
   getDaysToSummer() {
-    const summerStart = new Date();
-    summerStart.setUTCMonth(5, 20);
-
-    const summerEnd = new Date();
-    summerEnd.setUTCMonth(8, 22);
-
     const currentTime = new Date();
+    const summerStart = new Date(Date.UTC(currentTime.getUTCFullYear(), 5, 21));
+    const summerEnd = new Date(Date.UTC(currentTime.getUTCFullYear(), 8, 23));
 
-    if (currentTime > summerStart || currentTime < summerEnd) {
-      return '';
+    let days;
+
+    if (summerStart < currentTime && currentTime <= summerEnd) {
+      days = '';
+    } else if (currentTime > summerEnd) {
+      const currentYear = currentTime.getUTCFullYear();
+      const nextYear = currentYear + 1;
+      const nextSummer = new Date(Date.UTC(nextYear, 5, 21));
+      days = Math.floor((nextSummer.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
     }
+
+    return days ;
   }
 
   render() {
@@ -27,8 +32,7 @@ class DaysToSummer extends React.Component {
   }
 }
 
-DaysToSummer.propTypes = {
-  title: PropTypes.string,
+DaysToSummer.propTypes = {  title: PropTypes.string,
 };
 
 export default DaysToSummer;
