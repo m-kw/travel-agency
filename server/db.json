@@ -995,6 +995,21 @@
       "tripId": "5cc1d10181a30e85c8d9ad4a",
       "tripCountry": "Togo",
       "id": 68
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "rrr",
+      "contact": "rr",
+      "start-date": "",
+      "totalCost": "$51,381",
+      "tripName": "Pleasant travel in cool Turkey",
+      "tripId": "5cc1d10130dfa407e2e54e20",
+      "tripCountry": "Turkey",
+      "id": 69
     }
   ]
 }
