@@ -14,17 +14,7 @@ const validateForm = (options, tripCost, tripName, tripCountry, tripId) => {
   const textInputs = document.querySelectorAll('#text');
   const inputArray = Array.from(textInputs);
 
-  let isValid = false;
-
-  inputArray.every(function(i) {
-    if (i.value !== '') {
-      isValid = true;
-      console.log('isValid?', isValid);
-    } else {
-      isValid = false;
-      console.log('isValid?', isValid);
-    }
-  });
+  const isValid = inputArray.every(input => input.value !== '');
 
   isValid ? sendOrder(options, tripCost, tripName, tripCountry, tripId) : null;
 
