@@ -10,7 +10,7 @@ class DaysToSummer extends React.Component {
 
     let days;
 
-    if (summerStart < currentTime && currentTime <= summerEnd) {
+    if (summerStart <= currentTime && currentTime <= summerEnd) {
       days = '';
     } else if (currentTime > summerEnd) {
       const currentYear = currentTime.getUTCFullYear();
@@ -18,8 +18,13 @@ class DaysToSummer extends React.Component {
       const nextSummer = new Date(Date.UTC(nextYear, 5, 21));
       days = Math.floor((nextSummer.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
     } else if (currentTime < summerStart) {
-      days = Math.floor((summerStart.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
-    } 
+      const oneDay = new Date(Date.UTC(currentTime.getUTCFullYear(), 5, 20));
+      if (currentTime.getTime() === oneDay.getTime()) {
+        days = '1 day to summer';
+      } else {
+        days = Math.floor((summerStart.getTime() - currentTime.getTime()) / (1000*60*60*24)) + ' days to summer';
+      }
+    }
 
     return days ;
   }
