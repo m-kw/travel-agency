@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './DaysToSummer.scss';
 
 class DaysToSummer extends React.Component {
@@ -30,16 +29,12 @@ class DaysToSummer extends React.Component {
   }
 
   render() {
-    //const { title } = this.props;
-    return(
+    return (
       <div className={styles.component}>
         <h3 className={styles.title}>{this.getDaysToSummer()}</h3>
       </div>
     );
   }
 }
-
-DaysToSummer.propTypes = {  title: PropTypes.string,
-};
 
 export default DaysToSummer;
