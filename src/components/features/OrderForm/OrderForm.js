@@ -10,20 +10,13 @@ import settings from '../../../data/settings.js';
 import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
 
-const validateForm = (valid, options, tripCost, tripName, tripCountry, tripId) => {
+const validateForm = (options, tripCost, tripName, tripCountry, tripId) => {
   const textInputs = document.querySelectorAll('#text');
+  const inputArray = Array.from(textInputs);
 
-  textInputs.forEach(function() {
-    if (textInputs[0].value !== '' && textInputs[1].value !== '') {
-      valid = true;
-      console.log('isValid?', valid);
-    } else {
-      valid = false;
-      console.log('isValid?', valid);
-    }
-  });
+  const isValid = inputArray.every(input => input.value !== '');
 
-  valid ? sendOrder(options, tripCost, tripName, tripCountry, tripId) : null;
+  isValid ? sendOrder(options, tripCost, tripName, tripCountry, tripId) : null;
 
 };
 
@@ -58,7 +51,7 @@ const sendOrder = (options, tripCost, tripName, tripCountry, tripId) => {
     });
 };
 
-const OrderForm = ({ tripCost, setOrderOption, options, tripName, tripCountry, tripId, valid }) => {
+const OrderForm = ({ tripCost, setOrderOption, options, tripName, tripCountry, tripId }) => {
   return (
     <Row>
       {pricing.map((option) => (
@@ -68,7 +61,7 @@ const OrderForm = ({ tripCost, setOrderOption, options, tripName, tripCountry, t
       ))}
       <Col xs={12}>
         <OrderSummary tripCost={tripCost} options={options}/>
-        <Button onClick={() => validateForm(valid, options, tripCost, tripName, tripCountry, tripId)}>Order now!</Button>
+        <Button onClick={() => validateForm(options, tripCost, tripName, tripCountry, tripId)}>Order now!</Button>
       </Col>
     </Row>
   );
@@ -81,7 +74,6 @@ OrderForm.propTypes = {
   tripCountry: PropTypes.string,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
-  valid: PropTypes.bool,
 };
 
 export default OrderForm;
